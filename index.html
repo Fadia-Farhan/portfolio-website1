@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio | [Fadia Farhan]</title>
+<meta name="description" content="This is my personal portfolio website built using HTML, CSS, and JavaScript. Fully responsive with dark mode and interactive features.">
+<meta name="author" content="[Fathima Fadia Farhan]">
+<meta name="keywords" content="portfolio, web developer, HTML, CSS, JavaScript, responsive design, student project">
+<link rel="icon" href="favicon.png" type="image/png">
+
+  <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Navbar styles */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #222;
+      color: #fff;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 1.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      color: #00adb5;
+    }
+
+    /* Hero section */
+    .hero {
+      background-image: url(https://i.pinimg.com/736x/04/50/be/0450bea4eb2d577c5957526599d1e0f7.jpg);
+      background-size: cover;
+      background-position: center;
+      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-text h2 {
+      color: white;
+      font-size: 2.5rem;
+      background-color: rgba(0,0,0,0.5);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      .nav-links li {
+        margin: 0.5rem 0;
+      }
+
+      .hero-text h2 {
+        font-size: 2rem;
+        padding: 1rem;
+      }
+    }
+
+    .about {
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.profile-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.about-content p {
+  flex: 1;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .about-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .profile-photo {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Animation styles */
+.about-content {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.about-content.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Heading animation */
+.about-heading {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.about-heading.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Skills section */
+.skills {
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.skills-heading {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.skills-heading.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skills-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.skill span {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0;
+  background-color: #00adb5;
+  border-radius: 10px;
+  transition: width 1s ease-out;
+}
+
+.progress.html.show { width: 90%; }
+.progress.css.show { width: 85%; }
+.progress.js.show { width: 75%; }
+.progress.responsive.show { width: 80%; }
+
+@media (min-width: 600px) {
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Projects section */
+.projects {
+  padding: 3rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.projects-heading {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.projects-heading.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.projects-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.project-card {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transform: scale(1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-card h3 {
+  margin: 1rem;
+  font-size: 1.3rem;
+}
+
+.project-card p {
+  margin: 0 1rem 1rem;
+  font-size: 1rem;
+}
+
+.project-btn {
+  display: inline-block;
+  margin: 0 1rem 1.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #00adb5;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.project-btn:hover {
+  background-color: #007b80;
+}
+
+.project-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+/* Contact section */
+.contact {
+  padding: 3rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-heading {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.contact-heading.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+input, textarea {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #00adb5;
+}
+
+button[type="submit"] {
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: #00adb5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #007b80;
+}
+
+.error-msg {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.form-success {
+  text-align: center;
+  color: green;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: inherit;
+  margin-left: auto;
+}
+
+/* Dark mode styles */
+body.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark header,
+body.dark .about,
+body.dark .skills,
+body.dark .projects,
+body.dark .contact {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+body.dark input,
+body.dark textarea {
+  background-color: #2c2c2c;
+  color: #ffffff;
+  border-color: #444;
+}
+
+body.dark .project-card {
+  background-color: #2c2c2c;
+}
+
+body.dark .project-btn,
+body.dark button[type="submit"] {
+  background-color: #005f61;
+}
+
+body.dark .project-btn:hover,
+body.dark button[type="submit"]:hover {
+  background-color: #00888a;
+}
+
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #00adb5;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-top:hover {
+  background-color: #007b80;
+  transform: translateY(-3px);
+}
+
+/* Show button */
+.back-to-top.show {
+  display: flex;
+}
+
+/* Dark mode */
+body.dark .back-to-top {
+  background-color: #005f61;
+}
+body.dark .back-to-top:hover {
+  background-color: #00888a;
+}
+
+/* Footer */
+.footer {
+  background-color: hsl(197, 54%, 59%);
+  color: #222;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: 3rem;
+  font-size: 0.95rem;
+}
+
+.footer-links {
+  margin-top: 0.5rem;
+}
+
+.footer-links a {
+  margin: 0 10px;
+  color: #094649;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #007b80;
+}
+
+/* Dark mode */
+body.dark .footer {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+body.dark .footer-links a {
+  color: #00e0ff;
+}
+
+body.dark .footer-links a:hover {
+  color: #00b4cc;
+}
+
+/* =============================
+   📱 Mobile Responsive Styles
+============================= */
+
+@media (max-width: 768px) {
+  header nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .hero {
+    height: auto;
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .about,
+  .skills,
+  .projects,
+  .contact {
+    padding: 2rem 1rem;
+  }
+
+  .skills .skills-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .projects .project-card {
+    width: 100%;
+  }
+
+  .contact form {
+    width: 100%;
+  }
+
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  header nav ul {
+    font-size: 0.9rem;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .theme-toggle {
+    font-size: 1.2rem;
+  }
+
+  .project-btn,
+  button[type="submit"] {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .footer-links a {
+    display: block;
+    margin: 0.4rem 0;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+ 
+
+
+    <nav class="navbar">
+      <h1 class="logo">Fadia Farhan</h1>
+       <nav>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+     
+      <button id="themeToggle" class="theme-toggle">🌙</button>
+
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Welcome to My Portfolio</h2>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+  <h2 class="about-heading">About Me</h2>
+
+  <div class="about-content">
+    <img src="https://i.pinimg.com/736x/cf/ac/db/cfacdb1beb14337ec110c52896a97d47.jpg" alt="Profile Photo" class="profile-photo" />
+    <p>
+      Hello! I'm a passionate software developer with experience in building responsive websites and applications. I love coding, solving problems, and learning new technologies.
+    </p>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section class="skills" id="skills">
+  <h2 class="skills-heading">My Skills</h2>
+  <div class="skills-grid">
+    <div class="skill">
+      <span>HTML</span>
+      <div class="progress-bar">
+        <div class="progress html"></div>
+      </div>
+    </div>
+    <div class="skill">
+      <span>CSS</span>
+      <div class="progress-bar">
+        <div class="progress css"></div>
+      </div>
+    </div>
+    <div class="skill">
+      <span>JavaScript</span>
+      <div class="progress-bar">
+        <div class="progress js"></div>
+      </div>
+    </div>
+    <div class="skill">
+      <span>Responsive Design</span>
+      <div class="progress-bar">
+        <div class="progress responsive"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section class="projects" id="projects">
+  <h2 class="projects-heading">My Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-WVQijCgCslsDAlS2_i9AiS5-U95cCyaeQw&s" alt="Project 1">
+      <h3>Portfolio Website</h3>
+      <p>A responsive portfolio site built with HTML, CSS, and JavaScript.</p>
+      <a href="#" class="project-btn" target="_blank">View Project</a>
+    </div>
+    <div class="project-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSFb0b4D0QjeeepuAa1nmcksjmNSC0dfRijA&s" alt="Project 2">
+      <h3>To-Do App</h3>
+      <p>A simple and interactive to-do list app with local storage support.</p>
+      <a href="#" class="project-btn" target="_blank">View Project</a>
+    </div>
+    <div class="project-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc0F5cqUv-OpOAkQMT4TLj0PksSujyNrvUQw&s" alt="Project 3">
+      <h3>Weather App</h3>
+      <p>Displays live weather data using a public API and styled with Flexbox.</p>
+      <a href="#" class="project-btn" target="_blank">View Project</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact" id="contact">
+  <h2 class="contact-heading">Contact Me</h2>
+  <form class="contact-form" id="contactForm" novalidate>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" required>
+      <span class="error-msg" id="nameError"></span>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
+      <span class="error-msg" id="emailError"></span>
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" rows="5" required></textarea>
+      <span class="error-msg" id="messageError"></span>
+    </div>
+    <button type="submit">Send Message</button>
+    <p class="form-success" id="formSuccess"></p>
+  </form>
+</section>
+
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const aboutContent = document.querySelector('.about-content');
+    const aboutHeading = document.querySelector('.about-heading');
+    const skillsHeading = document.querySelector('.skills-heading');
+    const projectsHeading = document.querySelector('.projects-heading');
+    const progressBars = document.querySelectorAll('.progress');
+    const projectCards = document.querySelectorAll('.project-card');
+    const contactHeading = document.querySelector('.contact-heading');
+
+    const observerOptions = { threshold: 0.3 };
+
+    const fadeObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    if (aboutHeading) fadeObserver.observe(aboutHeading);
+    if (aboutContent) fadeObserver.observe(aboutContent);
+    if (skillsHeading) fadeObserver.observe(skillsHeading);
+    if (projectsHeading) fadeObserver.observe(projectsHeading);
+    if (contactHeading) fadeObserver.observe(contactHeading);
+
+    progressBars.forEach(bar => fadeObserver.observe(bar));
+    projectCards.forEach(card => fadeObserver.observe(card));
+
+    // Contact form validation
+    const form = document.getElementById("contactForm");
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const message = document.getElementById("message");
+
+    const nameError = document.getElementById("nameError");
+    const emailError = document.getElementById("emailError");
+    const messageError = document.getElementById("messageError");
+    const formSuccess = document.getElementById("formSuccess");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      let valid = true;
+
+      // Reset previous errors
+      nameError.textContent = "";
+      emailError.textContent = "";
+      messageError.textContent = "";
+      formSuccess.textContent = "";
+
+      if (name.value.trim() === "") {
+        nameError.textContent = "Name is required.";
+        valid = false;
+      }
+
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (email.value.trim() === "") {
+        emailError.textContent = "Email is required.";
+        valid = false;
+      } else if (!emailPattern.test(email.value.trim())) {
+        emailError.textContent = "Enter a valid email address.";
+        valid = false;
+      }
+
+      if (message.value.trim() === "") {
+        messageError.textContent = "Message cannot be empty.";
+        valid = false;
+      }
+
+      if (valid) {
+        formSuccess.textContent = "Message sent successfully!";
+        form.reset();
+      }
+    });
+  });
+
+  // Dark Mode Toggle
+const themeToggle = document.getElementById('themeToggle');
+const currentTheme = localStorage.getItem('theme');
+
+if (currentTheme === 'dark') {
+  document.body.classList.add('dark');
+  themeToggle.textContent = '☀️';
+}
+
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+  localStorage.setItem('theme', theme);
+  themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+});
+
+
+// Back to Top Button Logic
+const backToTop = document.getElementById('backToTop');
+
+// Show/hide button based on scroll position
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    backToTop.classList.add('show');
+  } else {
+    backToTop.classList.remove('show');
+  }
+});
+
+// Smooth scroll to top on click
+backToTop.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+
+</script>
+
+
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top">↑</button>
+
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; 2025 Fadia Farhan. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="#" target="_blank">LinkedIn</a>
+    <a href="#" target="_blank">GitHub</a>
+    <a href="mailto:your@email.com">Email</a>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
